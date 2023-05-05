@@ -6,29 +6,23 @@ const jwt = require('jsonwebtoken');
 const Studio = require('../models/studioModel');
 const joi = require('joi');
 const userValidation = require('../validations/userValidation');
+const Role = require('../models/roleModel');
 
 
 
 
 //  BASE ROUTE: /api/users
-
+// Register User Method
 const registerUser = asyncHandler(async (req, res) => {
 
     console.log(req.body);
+
     const userData = req.body;
-
-
-
     const { error, value } = userValidation.validate(userData)
     if (error) { res.status(401); throw new Error(error) }
-
-
-
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
     const newUser = await User.create(userData)
-
-
     res.status(201).json(newUser)
 
 
@@ -46,14 +40,14 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const { email, phone, password } = req.body;
 
+
     if (!(email || phone) && password) {
         res.status(400)
         throw new Error("All fields are required")
     }
-
-    const user = await User.findOne({ $or: [{ email, phone }] })
-
-
+    // console.log(email, phone)
+    let user = await User.findOne({ $or: [{ email }, { phone }] }).populate('role')
+    // console.log(roles);
 
     if (user && (await bcrypt.compare(password, user.password))) {
 
@@ -64,9 +58,16 @@ const loginUser = asyncHandler(async (req, res) => {
                 id: user.id
             }
         },
-            process.env.ACCESS_TOKEN_SECRET, { expiresIn: '50min' }
+            process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }
         )
 
+        user = user.toObject();
+        delete user.password;
+
+        if (user.role.name === 'admin' && !user.studio.length) {
+            user.studioDetailsRequired = true;
+        }
+        console.log(user);
 
         res.status(200).json({ accessToken })
     } else {

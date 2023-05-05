@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
 
     name: {
         type: String,
-        // required: true
+        required: true
     },
 
     email: {
@@ -17,9 +17,9 @@ const userSchema = mongoose.Schema({
     },
 
     phone: {
-        type : Number,
-        required
-    }
+        type: Number,
+        required: true
+    },
 
     whatsapp_number: {
         type: Number,
@@ -45,7 +45,6 @@ const userSchema = mongoose.Schema({
     role: {
 
         type: mongoose.Schema.Types.ObjectId,
-
         ref: 'Role'
 
 
