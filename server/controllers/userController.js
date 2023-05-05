@@ -17,13 +17,13 @@ const registerUser = asyncHandler(async (req, res) => {
     console.log(req.body);
     const userData = req.body;
 
-    
-    
+
+
     const { error, value } = userValidation.validate(userData)
     if (error) { res.status(401); throw new Error(error) }
-    
-    
-    
+
+
+
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
     const newUser = await User.create(userData)
@@ -44,14 +44,14 @@ const registerUser = asyncHandler(async (req, res) => {
 
 const loginUser = asyncHandler(async (req, res) => {
 
-    const { email,phone,  password } = req.body;
+    const { email, phone, password } = req.body;
 
-    if (!(email || phone) && password ){
+    if (!(email || phone) && password) {
         res.status(400)
-        throw new Error("All fields are mandatory")
+        throw new Error("All fields are required")
     }
 
-    const user = await User.findOne({$or:[ {email,phone} )
+    const user = await User.findOne({ $or: [{ email, phone }] })
 
 
 
