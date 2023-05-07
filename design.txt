@@ -1,0 +1,23 @@
+role_code.
+CRT_STDIO = Create Studio,'studio/create/'
+UPDT_STDIO = Update Studio
+DEL_STDIO 
+
+
+{
+    name:"Sheji",
+    role:[CRT_STDIO,DEL_STDIO]
+},
+{
+    name:"Nimish",
+    role:[CRT_STDIO,DEL_STDIO]
+}
+
+sheji ,developer , role:[Create studio,Update studio],
+nimish ,developer , role:[VIEW_JOBS]
+
+
+middleware(){
+    avialble_role = [],
+    req.
+}

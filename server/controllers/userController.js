@@ -63,11 +63,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
         user = user.toObject();
         delete user.password;
-
-        if (user.role.name === 'admin' && !user.studio.length) {
-            user.studioDetailsRequired = true;
-        }
-        console.log(user);
+        // console.log(user);
 
         res.status(200).json({ accessToken })
     } else {
@@ -75,11 +71,6 @@ const loginUser = asyncHandler(async (req, res) => {
         res.status(401)
         throw new Error('Email or Password not valid')
     }
-
-
-
-
-
 })
 
 

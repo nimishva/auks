@@ -15,7 +15,9 @@ const studioSchema = mongoose.Schema({
         type: String,
     },
 
-
+    phone_number : {
+        type: Number
+    },
 
     address1: {
         type: String,
@@ -72,6 +74,10 @@ const studioSchema = mongoose.Schema({
         ref: 'User'
     }],
 
+    location_map: {
+        type: String,
+        required: true
+    }
 
 
 }, {
