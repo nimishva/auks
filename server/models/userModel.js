@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Joi = require('joi');
+
 
 const userSchema = mongoose.Schema({
 
@@ -47,8 +47,13 @@ const userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Role'
 
-
     },
+
+    isActive: {
+        type: Boolean,
+        default: false
+    }
+
 
 
 }, {

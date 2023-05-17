@@ -1,23 +1,74 @@
-role_code.
-CRT_STDIO = Create Studio,'studio/create/'
-UPDT_STDIO = Update Studio
-DEL_STDIO 
 
 
-{
-    name:"Sheji",
-    role:[CRT_STDIO,DEL_STDIO]
-},
-{
-    name:"Nimish",
-    role:[CRT_STDIO,DEL_STDIO]
-}
+-------------
+user collection:  
+        name and adrss
+        studio
 
-sheji ,developer , role:[Create studio,Update studio],
-nimish ,developer , role:[VIEW_JOBS]
+        actionsavailable[ref:action collection]
+--------------------
+
+actions collection:
+        url,
+        code,
+        name  
+{id:"mongoid",url:"",code:"CRT_STUDIO",name:"Create Studio",default:"admin"}
+{id:"mongoid",url:"",code:"CRT_STUDIO",name:"Create Studio",default:"user"}
+{id:"mongoid",url:"",code:"CRT_STUDIO",name:"Create Studio",default:"employee"}
+{id:"mongoid",url:"",code:"CRT_STUDIO",name:"Create Studio",default:"admin"}
+
+actionsReference:
+
+user_id:"mongoid",actions:[ref:actions_id]
+
+-------------------
+
+studio:
+name & address
+mng.users
 
 
-middleware(){
-    avialble_role = [],
-    req.
-}
+
+
+
+list of actions:
+        related to studio entity:
+        CRT_STDIO : create studio,
+        UPDT_STDIO: update studio,
+        RD_STDIO : read studio,
+        DEL_STDIO : delete studio,
+
+       related to employee entity:
+
+       CRT_EMP : create employee,
+       UPDT_EMP: update employee,
+       RD_EMP : read employee,
+       DEL_EMP : delete employee,
+
+       related to service of provider:
+
+       CRT_SERV : create service,
+       UPDT_SERV: update service,
+       RD_SERV : read service,
+       DEL_SERV : delete service,
+
+       related to SRs:
+
+       CRT_SER_REQ : create service request,
+       UPDT_SER_REQ: update service request,
+       RD_SER_REQ : read service request,
+       DEL_SER_REQ : delete service request,
+       
+        related to services: [
+               {
+                     
+               }
+        ]
+           
+
+
+permissions :[{
+        name:"SR Requests",actionGroup:"SR_REQUESTS",icon:"icon_path/icon_name",
+        name:"Employee":actionGroup:"USER", icon:""
+}]
+

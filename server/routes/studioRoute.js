@@ -1,7 +1,5 @@
 const express = require('express');
 const { createStudio, getStudio, updateStudio, deleteStudio } = require('../controllers/studioController');
-const accessAuthorisation = require('../middlewares/authorisation/adminaccess');
-
 
 
 const router = express.Router();

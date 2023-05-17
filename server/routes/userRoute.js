@@ -4,6 +4,8 @@ const { registerUser, loginUser, logoutUser } = require('../controllers/userCont
 const router = express.Router();
 
 router.post('/register', registerUser);
+// router.delete('/remove',removeUser);
+// router.get('/get', getUser);
 router.post('/login', loginUser);
 router.post('/logout', logoutUser);
 

@@ -10,14 +10,17 @@ const createStudio = expressAsyncHandler(async (req, res) => {
 })
 
 const getStudio = expressAsyncHandler(async (req, res) => {
-    if (req.params) {
-        const { id } = req.params
 
-        let studio = await Studio.findOne({ id })
+    console.log(req.originalUrl);
+    res.json('okkkk')
+    // if (req.params) {
+    //     const { id } = req.params
 
-    } else {
+    //     // let studio = await Studio.findOne({ id })
 
-    }
+    // } else {
+
+    // }
 })
 
 const updateStudio = expressAsyncHandler(async (req, res) => {

@@ -1,0 +1,44 @@
+[
+    {
+        "service_name": "Mug Printing",
+        "description": "Print customised photos on mug",
+        "service_charge": 400,
+        "image": "www.pexels.com"
+    },
+
+
+
+    {
+        "service_name": "Passport Size photo",
+        "description": "Photo in passport size as per country requirements",
+        "service_charge": 120,
+        "image": "www.pexels.com"
+    },
+
+    {
+        "service_name": "Photo Restoration",
+        "description": "Restore old, black&white, faded photos",
+        "service_charge": 450,
+        "image": "www.pexels.com"
+    },
+
+    {
+        "service_name": "Photostat",
+        "description": "Make a hardcopy of documents",
+        "service_charge": 2,
+        "image": "www.pexels.com"
+    },
+    {
+        "service_name": "Photo Framing",
+        "description": "Frame the photos as per the needs",
+        "service_charge": 650,
+        "image": "www.pexels.com"
+    },
+
+    {
+        "service_name": "Album Designing",
+        "description": "Design the album",
+        "service_charge": 650,
+        "image": "www.pexels.com"
+    }
+]

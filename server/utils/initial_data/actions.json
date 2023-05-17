@@ -1,0 +1,111 @@
+[
+    {
+        "name": "create studio",
+        "code": "CRT_STDO",
+        "endpoint": "/studio/create",
+        "group": "studio",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "edit studio",
+        "code": "EDT_STDO",
+        "endpoint": "/studio/:id",
+        "group": "studio",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "delete studio",
+        "code": "DEL_STDO",
+        "endpoint": "/studio/:id",
+        "group": "studio",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "create employee",
+        "code": "CRT_EMPLY",
+        "endpoint": "/user/register",
+        "group": "employee",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "delete employee",
+        "code": "DEL_EMPLY",
+        "endpoint": "/user/delete",
+        "group": "employee",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "update employee",
+        "code": "UPDT_EMPLY",
+        "endpoint": "/user/update",
+        "group": "employee",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "create service",
+        "code": "CRT_SRV",
+        "endpoint": "/service/create",
+        "group": "service",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "update service",
+        "code": "UPDT_SRV",
+        "endpoint": "/service/update",
+        "group": "service",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "delete service",
+        "code": "DEL_SRV",
+        "endpoint": "/service/delete",
+        "group": "service",
+        "default": [
+            "admin"
+        ]
+    },
+    {
+        "name": "create service request",
+        "code": "CRT_SRV_RQST",
+        "endpoint": "/service-request/create",
+        "group": "service-request",
+        "default": [
+            "user"
+        ]
+    },
+    {
+        "name": "update service request",
+        "code": "UPDT_SRV_RQST",
+        "endpoint": "/service-request/update",
+        "group": "service-request",
+        "default": [
+            "user",
+            "employee"
+        ]
+    },
+    {
+        "name": "delete service request",
+        "code": "DEL_SRV_RQST",
+        "endpoint": "/service-request/delete",
+        "group": "service-request",
+        "default": [
+            "user"
+        ]
+    }
+]
