@@ -61,10 +61,10 @@ const loginUser = asyncHandler(async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }
         )
 
-        user = user.toObject();
+        user = user.toObject(); 
         delete user.password;
         // console.log(user);
-
+         
         res.status(200).json({ accessToken })
     } else {
 

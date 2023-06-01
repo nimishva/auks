@@ -7,7 +7,7 @@ const Service = require("../models/serviceModel");
 const createService = expressAsyncHandler(async (req, res) => {
     const { error, value } = serviceValidation.validate(req.body);
 
-    const newService = await Service.create(req.body)
+    const newService = await Service.create(req.body);
     res.status(201).json(newService)
 
 })
@@ -27,7 +27,7 @@ const getService = expressAsyncHandler(async (req, res) => {
 })
 
 const updateService = expressAsyncHandler(async (req, res) => {
-
+    
 })
 
 const deleteService = expressAsyncHandler(async (req, res) => {

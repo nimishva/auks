@@ -11,23 +11,43 @@ const createStudio = expressAsyncHandler(async (req, res) => {
 
 const getStudio = expressAsyncHandler(async (req, res) => {
 
-    console.log(req.originalUrl);
-    res.json('okkkk')
-    // if (req.params) {
-    //     const { id } = req.params
+    // console.log(req.originalUrl);
+    if (req.params) {
+        const { id } = req.params
 
-    //     // let studio = await Studio.findOne({ id })
+        const studio = await Studio.findOne({ id });
 
-    // } else {
+        if (!studio) {
+
+            res.status(404)
+            throw new Error("Studio Not Found");
+        }
+
+        res.status(200).json(studio)
+
+    }
+    // else {
 
     // }
 })
 
 const updateStudio = expressAsyncHandler(async (req, res) => {
+    const { id } = req.params;
 
-})
+    const data = req.body;
+    const updatedStudio = await Studio.updateOne({ id });
+    res.status(200).json(updatedStudio);
+
+
+});
 
 const deleteStudio = expressAsyncHandler(async (req, res) => {
+
+    const { id } = req.params;
+
+    const deletedStudio = await Studio.deleteOne({ id });
+    console.log(deletedStudio);
+    res.status(200).json(deleteStudio);
 
 })
 
