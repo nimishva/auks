@@ -3,15 +3,14 @@ const mongoose = require("mongoose");
 
 const userActionRefSchema = mongoose.Schema({
 
-    user_id : mongoose.Schema.Types.ObjectId,       
-    
+    user_id: {
+        type: mongoose.Schema.Types.ObjectId
+    },
+    actions: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Action'
 
-     actions : [{
-        type : mongoose.Schema.Types.ObjectId,
-        ref : 'Action'
-
-     }]   
-
+    }]
 
 }, {
     timestamps: true

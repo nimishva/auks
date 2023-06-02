@@ -18,8 +18,10 @@ const addInitialDataToDb = async () => {
     async function feedInitialDataToDb(collName, documents) {
         let collection;
         let indexOfCollection = collections.findIndex((data) => data.name == collName);
-        if (indexOfCollection != -1) collection = await eval(collName + ".find({})");
-        if (indexOfCollection == -1 || (collection.length)) {
+        if (indexOfCollection != -1) {
+            collection = await eval(collName + ".find({})");
+        }
+        if (indexOfCollection == -1 || (collection.length == 0)) {
             const result = await eval(collName + ".insertMany(documents)")
             // console.log(result);
         }

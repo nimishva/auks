@@ -9,9 +9,9 @@ const roleSchema = mongoose.Schema({
     },
 
     permissions: [{
-        name : String,
-        action_group : String,
-        icon : String
+        name: String,
+        action_group: String,
+        icon: String
     }],
 
 },

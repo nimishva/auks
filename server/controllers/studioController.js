@@ -18,7 +18,6 @@ const getStudio = expressAsyncHandler(async (req, res) => {
         const studio = await Studio.findOne({ id });
 
         if (!studio) {
-
             res.status(404)
             throw new Error("Studio Not Found");
         }
@@ -26,9 +25,10 @@ const getStudio = expressAsyncHandler(async (req, res) => {
         res.status(200).json(studio)
 
     }
-    // else {
-
-    // }
+    else {
+          const studios = await Studio.find({});
+          res.status(200).json(studios) 
+    }
 })
 
 const updateStudio = expressAsyncHandler(async (req, res) => {

@@ -8,7 +8,7 @@ const createService = expressAsyncHandler(async (req, res) => {
     const { error, value } = serviceValidation.validate(req.body);
 
     const newService = await Service.create(req.body);
-    res.status(201).json(newService)
+    res.status(201).json(newService);
 
 })
 
@@ -27,10 +27,20 @@ const getService = expressAsyncHandler(async (req, res) => {
 })
 
 const updateService = expressAsyncHandler(async (req, res) => {
-    
+
+    const { id } = req.params;
+
+    const updatedService = await Service.findOneAndUpdate({ id }, req.body);
+    res.status(200).json(updatedService);
+
+
 })
 
 const deleteService = expressAsyncHandler(async (req, res) => {
+    const { id } = req.params;
+
+    await Service.deleteOne({ id })
+    res.status(200).json('successfully deleted');
 
 })
 

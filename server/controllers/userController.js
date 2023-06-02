@@ -16,7 +16,6 @@ const Role = require('../models/roleModel');
 const registerUser = asyncHandler(async (req, res) => {
 
     console.log(req.body);
-
     const userData = req.body;
     const { error, value } = userValidation.validate(userData)
     if (error) { res.status(401); throw new Error(error) }
@@ -61,10 +60,10 @@ const loginUser = asyncHandler(async (req, res) => {
             process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }
         )
 
-        user = user.toObject(); 
+        user = user.toObject();
         delete user.password;
         // console.log(user);
-         
+
         res.status(200).json({ accessToken })
     } else {
 
@@ -78,7 +77,7 @@ const logoutUser = (req, res) => { }
 
 
 
-module.exports = { registerUser, loginUser, logoutUser };               
+module.exports = { registerUser, loginUser, logoutUser };
 
 
 
