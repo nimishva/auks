@@ -3,7 +3,8 @@ const Studio = require("../models/studioModel")
 const studioValidation = require("../validations/studioValidation")
 
 const createStudio = expressAsyncHandler(async (req, res) => {
-    const { error, value } = studioValidation.validate(req.body);
+    // const { error, value } = studioValidation.validate(req.body);
+    
     const newStudio = await Studio.create(req.body)
     res.status(201).json(newStudio);
 

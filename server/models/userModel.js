@@ -39,7 +39,7 @@ const userSchema = mongoose.Schema({
     studio: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Studio'
-    }],
+    }],                                                           
 
 
     role: {

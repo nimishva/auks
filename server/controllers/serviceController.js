@@ -5,7 +5,7 @@ const Service = require("../models/serviceModel");
 
 
 const createService = expressAsyncHandler(async (req, res) => {
-    const { error, value } = serviceValidation.validate(req.body);
+    // const { error, value } = serviceValidation.validate(req.body);
 
     const newService = await Service.create(req.body);
     res.status(201).json(newService);

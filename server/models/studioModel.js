@@ -9,13 +9,16 @@ const studioSchema = mongoose.Schema({
     },
 
 
-    services: [],
+    services: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Service'
+    }],
 
     website: {
         type: String,
     },
 
-    phone_number : {
+    phone_number: {
         type: Number
     },
 
@@ -77,7 +80,12 @@ const studioSchema = mongoose.Schema({
     location_map: {
         type: String,
         required: true
-    }
+    },
+
+    email: {
+        type: String,
+        required: true
+    },
 
 
 }, {

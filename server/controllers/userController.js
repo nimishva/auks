@@ -17,21 +17,12 @@ const registerUser = asyncHandler(async (req, res) => {
 
     console.log(req.body);
     const userData = req.body;
-    const { error, value } = userValidation.validate(userData)
+    // const { error, value } = userValidation.validate(userData)
     if (error) { res.status(401); throw new Error(error) }
     const hashedPassword = await bcrypt.hash(userData.password, 10);
     userData.password = hashedPassword;
     const newUser = await User.create(userData)
     res.status(201).json(newUser)
-
-
-
-
-    // const hashedPassword = bcrypt
-    // // const user = User.create({name, email,})
-
-
-
 
 })
 

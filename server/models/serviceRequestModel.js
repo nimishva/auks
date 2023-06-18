@@ -24,7 +24,7 @@ const serviceRequestSchema = mongoose.Schema({
 
     image: String,
 
-    mail: String,
+    message_to_studio: String,
 
 
 },
