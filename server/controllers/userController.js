@@ -64,11 +64,41 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 
+const updateUserName = asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    // console.log(typeof id);
+
+    let user = await User.findOne({ _id: id });
+
+    // console.log(user);
+
+    if (user) {
+
+
+        const update = {
+            $set: {
+                name: req.body.name,
+                email : req.body.email,
+            },
+        };
+
+        const updatedUser = await User.updateOne({ _id: id }, update);
+
+        res.status(200).json(user.name);   
+
+    } 
+    else {
+
+        res.status(404).json({ message: "User Not Found" })
+    }
+}
+)
+
 const logoutUser = (req, res) => { }
 
 
 
-module.exports = { registerUser, loginUser, logoutUser };
+module.exports = { registerUser, loginUser, updateUserName, logoutUser };
 
 
 
