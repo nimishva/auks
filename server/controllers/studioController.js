@@ -35,8 +35,8 @@ const getStudio = expressAsyncHandler(async (req, res) => {
 const updateStudio = expressAsyncHandler(async (req, res) => {
     const { id } = req.params;
 
-    const data = req.body;
-    const updatedStudio = await Studio.updateOne({ id });
+    const {data} = req.body;
+    const updatedStudio = await Studio.updateOne({ _id : id }, data);
     res.status(200).json(updatedStudio);
 
 

@@ -5,8 +5,8 @@ const validateToken = require('../middlewares/validateToken');
 
 
 
-router.get('/', validateToken, getService);
-router.route('/:id', validateToken).get(getService).put(updateService).delete(deleteService);
+router.get('/', /* validateToken, */ getService);
+router.route('/:id', /* validateToken */).get(getService).put(updateService).delete(deleteService);
 
-router.post('/create', validateToken, createService);
+router.post('/create', /* validateToken, */ createService);
 module.exports = router;

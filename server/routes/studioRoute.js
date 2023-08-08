@@ -14,7 +14,7 @@ router.post('/create', (req, res, next) => {
     }
     next()
 }, createStudio);
-router.get('/', validateToken, getStudio);
+router.get('/', /* validateToken, */ getStudio);
 router.route('/:id').get(getStudio).put(updateStudio).delete(deleteStudio);
 
 

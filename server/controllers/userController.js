@@ -75,18 +75,13 @@ const updateUserName = asyncHandler(async (req, res) => {
     if (user) {
 
 
-        const update = {
-            $set: {
-                name: req.body.name,
-                email : req.body.email,
-            },
-        };
 
-        const updatedUser = await User.updateOne({ _id: id }, update);
 
-        res.status(200).json(user.name);   
+        const updatedUser = await User.updateOne({ _id: id }, req.body);
 
-    } 
+        res.status(200).json(user);
+
+    }
     else {
 
         res.status(404).json({ message: "User Not Found" })

@@ -30,7 +30,7 @@ const updateService = expressAsyncHandler(async (req, res) => {
 
     const { id } = req.params;
 
-    const updatedService = await Service.findOneAndUpdate({ id }, req.body);
+    const updatedService = await Service.findOneAndUpdate({_id : id }, req.body);
     res.status(200).json(updatedService);
 
 
