@@ -1,6 +1,7 @@
 const express = require('express');
+const cors = require('cors')
 const dotenv = require('dotenv').config();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8001;
 const bodyParser = require('body-parser');
 const errorHandler = require('./middlewares/errorHandler');
 const connectDB = require('./config/dbConnection');
@@ -9,13 +10,15 @@ const User = require('./models/userModel');
 
 
 
-(async function () {
-    await connectDB();
-    /* ----------------dont delete it-------- */
-    // addInitialDataToDb();
-})()
+    (async function () {
+        await connectDB();
+
+        /* ----------------dont delete it-------- */
+        // addInitialDataToDb();
+    })()
 
 const app = express();
+app.use(cors({ origin: '*' }))
 app.use(bodyParser.json());
 
 

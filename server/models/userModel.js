@@ -10,18 +10,18 @@ const userSchema = mongoose.Schema({
 
     email: {
         type: String,
-        required: true,
+        required: true,   
         unique: true
         // match: [/^\S+@\S+\.\S+$/, 'Please fill a valid email address']
 
     },
 
-    phone: {
+    phoneNumber: {
         type: Number,
         required: true
     },
 
-    whatsapp_number: {
+    whatsAppNumber: {
         type: Number,
         // required
     },

@@ -11,57 +11,85 @@ const Role = require('../models/roleModel');
 
 
 
-//  BASE ROUTE: /api/users
+//  BASE ROUTE: /api/user
 // Register User Method
-const registerUser = asyncHandler(async (req, res) => {
-
-    console.log(req.body);
-    const userData = req.body;
-    // const { error, value } = userValidation.validate(userData)
-    if (error) { res.status(401); throw new Error(error) }
-    const hashedPassword = await bcrypt.hash(userData.password, 10);
-    userData.password = hashedPassword;
-    const newUser = await User.create(userData)
-    res.status(201).json(newUser)
-
-})
-
-const loginUser = asyncHandler(async (req, res) => {
-
-    const { email, phone, password } = req.body;
+const registerUser = async (req, res) => {
+    try {
 
 
-    if (!(email || phone) && password) {
-        res.status(400)
-        throw new Error("All fields are required")
+        console.log(req.body);
+        let userData = req.body;
+        const { error, value } = userValidation.validate(req.body)
+
+        if (error) {
+            console.error(error);
+
+            return res.status(401).json({ error })
+
+        }
+
+
+        const hashedPassword = await bcrypt.hash(value.password, 10);
+        value.password = hashedPassword;
+        const newUser = await User.create(value)
+
+
+        return res.status(201).json({ success: 'User created successfully' })
+
+    } catch (error) {
+        console.error(error);
+        return res.json({ error })
     }
-    // console.log(email, phone)
-    let user = await User.findOne({ $or: [{ email }, { phone }] }).populate('role')
-    // console.log(roles);
 
-    if (user && (await bcrypt.compare(password, user.password))) {
+}
 
-        const accessToken = jwt.sign({
-            user: {
-                username: user.username,
-                email: user.email,
-                id: user.id
-            }
-        },
-            process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }
-        )
+const loginUser = async (req, res) => {
+    try {
 
-        user = user.toObject();
-        delete user.password;
-        // console.log(user);
+        console.log('inside loginuser*****');
+        const { email, phoneNumber, password } = req.body;
 
-        res.status(200).json({ accessToken })
-    } else {
+        console.log(email, phoneNumber, password);
 
-        res.status(401)
-        throw new Error('Email or Password not valid')
+        if (!(email || phoneNumber) && password) {
+            res.status(400)
+            throw new Error("All fields are required")
+        }
+        // console.log(email, phone)
+        let user = await User.findOne({ $or: [{ email }, { phoneNumber }] }).populate('role')
+        console.log(user);
+
+        if (user && (await bcrypt.compare(password, user.password))) {
+
+            const accessToken = jwt.sign({
+                user: {
+                    username: user.username,
+                    email: user.email,
+                    id: user.id
+                }
+            },
+                process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' }
+            )
+
+            user = user.toObject();
+            delete user.password;
+            // console.log(user);
+
+            res.status(200).json({ message: 'success', accessToken })
+        } else {
+
+            console.error('Email or Password not valid');
+
+            res.status(401).json({ message: 'Error, Email or Password not valid' })
+
+        }
+
+    } catch (error) {
+        console.error(error)
+        return res.json(error)
     }
-})
+
+}
 
 
 const updateUserName = asyncHandler(async (req, res) => {
